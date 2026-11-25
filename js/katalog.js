@@ -141,5 +141,41 @@ function tampilkanKatalog(daftarProduk) {
   infoJumlah.textContent = `Menampilkan ${daftarProduk.length} dari ${katalog.length} produk`; 
 }
 
+// 7. Menyaring katalog berdasarkan kata kunci DAN kategori aktif 
+function saringKatalog() { 
+  const kataKunci = inputCari.value.trim().toLowerCase(); 
+ 
+  const hasil = katalog.filter((produk) => { 
+    const cocokKategori = kategoriAktif === "semua" || produk.kategori === kategoriAktif; 
+    const cocokKata = 
+      produk.nama.toLowerCase().includes(kataKunci) || 
+  produk.deskripsi.toLowerCase().includes(kataKunci); 
+    return cocokKategori && cocokKata; 
+  }); 
+ 
+  tampilkanKatalog(hasil); 
+} 
+ 
+// 8. Event: setiap kali pengguna mengetik di kotak pencarian 
+inputCari.addEventListener("input", saringKatalog); 
+
+// 9. Event: klik tombol filter kategori 
+tombolFilter.forEach((tombol) => { 
+  tombol.addEventListener("click", () => { 
+    kategoriAktif = tombol.dataset.kategori; 
+ 
+    // perbarui tampilan tombol: hanya satu yang aktif 
+    tombolFilter.forEach((t) => { 
+      t.classList.remove("aktif"); 
+      t.setAttribute("aria-pressed", "false"); 
+    }); 
+    tombol.classList.add("aktif"); 
+    tombol.setAttribute("aria-pressed", "true"); 
+ 
+    saringKatalog(); 
+  }); 
+}); 
+ 
+
 // 10. Tampilkan semua produk ketika halaman pertama kali dibuka 
 tampilkanKatalog(katalog);

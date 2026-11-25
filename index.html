@@ -56,6 +56,99 @@
             </p>
 
             <a class="tombol" href="#katalog">Lihat Katalog</a>
+            
+
+<div class="kontrol-katalog">
+
+    <!-- Kolom Pencarian Produk -->
+
+    <div class="kolom">
+
+        <label for="cari">Cari produk</label>
+
+        <input
+            type="search"
+            id="cari"
+            placeholder="Contoh: kemeja, selendang"
+        >
+
+    </div>
+
+
+    <!-- Filter Kategori Produk -->
+
+    <div
+        class="filter"
+        role="group"
+        aria-label="Filter kategori"
+    >
+
+        <button
+            type="button"
+            class="tombol-filter aktif"
+            data-kategori="semua"
+            aria-pressed="true"
+        >
+            Semua
+        </button>
+
+        <button
+            type="button"
+            class="tombol-filter"
+            data-kategori="kain"
+            aria-pressed="false"
+        >
+            Kain
+        </button>
+
+        <button
+            type="button"
+            class="tombol-filter"
+            data-kategori="pakaian"
+            aria-pressed="false"
+        >
+            Pakaian
+        </button>
+
+        <button
+            type="button"
+            class="tombol-filter"
+            data-kategori="aksesoris"
+            aria-pressed="false"
+        >
+            Aksesoris
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- Informasi Jumlah Produk -->
+
+<p
+    id="info-jumlah"
+    class="info-jumlah"
+    aria-live="polite"
+></p>
+
+
+<!-- Tempat Menampilkan Daftar Katalog -->
+
+<div
+    id="daftar-katalog"
+    class="katalog-grid"
+></div>
+
+
+<!-- Pesan Jika JavaScript Tidak Aktif -->
+
+<noscript>
+    <p>
+        Aktifkan JavaScript untuk melihat katalog produk.
+    </p>
+</noscript>
+
 
         </section>
 
