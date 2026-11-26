@@ -5,47 +5,9 @@
    ========================================================= */
 
 
-/* =========================================================
-   1. DATA KATALOG
-   Array yang berisi objek-objek produk
-   ========================================================= */
-
-const katalog = [
-
-    // Produk 1
-    {
-        id: 1,
-        nama: "Kain Motif Gigi Haruan",
-        kategori: "kain",
-        harga: 185000,
-        gambar: "img/gigi-haruan.svg",
-        deskripsi: "Kain katun 2 meter bermotif zig-zag menyerupai gigi ikan haruan."
-    },
-
-    // Produk 2
-    {
-        id: 2,
-        nama: "Kain Motif Kambang Kacang",
-        kategori: "kain",
-        harga: 175000,
-        gambar: "img/kambang-kacang.svg",
-        deskripsi: "Motif bunga kacang yang melambangkan keakraban dan kerukunan."
-    },
-
-    // Produk 3
-    {
-        id: 3,
-        nama: "Selendang Iris Pudak",
-        kategori: "aksesoris",
-        harga: 120000,
-        gambar: "img/iris-pudak.svg",
-        deskripsi: "Selendang ringan bermotif irisan daun pudak (pandan)."
-    }
-
-    // Lanjutkan penambahan produk lainnya
-    // Minimal 8 produk untuk tema Sasirangan Banua
-
-];
+// 1. Data katalog kini disimpan di data/katalog.json.
+// Awalnya kosong, lalu diisi oleh fungsi muatKatalog().
+let katalog = [];
 
 // 2. Ambil elemen-elemen HTML yang akan dimanipulasi 
 const daftarKatalog = document.querySelector("#daftar-katalog"); 
@@ -177,5 +139,56 @@ tombolFilter.forEach((tombol) => {
 }); 
  
 
-// 10. Tampilkan semua produk ketika halaman pertama kali dibuka 
-tampilkanKatalog(katalog);
+
+/* =========================================================
+   10. MEMUAT DATA KATALOG DARI FILE JSON SECARA ASINKRON
+   ========================================================= */
+
+async function muatKatalog() {
+
+    // Menampilkan status ketika katalog sedang dimuat
+    infoJumlah.textContent = "Memuat katalog...";
+
+
+    try {
+
+        // Mengambil data katalog dari file JSON
+        const respons = await fetch("data/katalog.json");
+
+
+        // Memeriksa apakah permintaan berhasil
+        if (!respons.ok) {
+            throw new Error(
+                `Gagal memuat katalog (HTTP ${respons.status})`
+            );
+        }
+
+
+        // Mengubah respons menjadi data JSON
+        katalog = await respons.json();
+
+
+        // Menampilkan katalog ke halaman
+        tampilkanKatalog(katalog);
+
+
+    } catch (galat) {
+
+        // Menampilkan informasi kesalahan di console
+        console.error(galat);
+
+
+        // Menampilkan pesan jika katalog gagal dimuat
+        infoJumlah.textContent =
+            "Maaf, katalog gagal dimuat. Periksa koneksi Anda lalu muat ulang halaman.";
+
+    }
+
+}
+
+
+/* =========================================================
+   11. MENJALANKAN FUNGSI MUAT KATALOG
+   ========================================================= */
+
+muatKatalog();

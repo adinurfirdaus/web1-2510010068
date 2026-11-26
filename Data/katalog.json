@@ -1,0 +1,35 @@
+[
+
+   
+    {
+        "id": 1,
+        "nama": "Kain Motif Gigi Haruan",
+        "kategori": "kain",
+        "harga": 185000,
+        "gambar": "img/gigi-haruan.svg",
+        "deskripsi": "Kain katun 2 meter bermotif zig-zag menyerupai gigi ikan haruan."
+    },
+
+  
+    {
+        "id": 2,
+        "nama": "Kain Motif Kambang Kacang",
+        "kategori": "kain",
+        "harga": 175000,
+        "gambar": "img/kambang-kacang.svg",
+        "deskripsi": "Motif bunga kacang yang melambangkan keakraban dan kerukunan."
+    },
+
+ 
+    {
+        "id": 3,
+        "nama": "Selendang Iris Pudak",
+        "kategori": "aksesoris",
+        "harga": 120000,
+        "gambar": "img/iris-pudak.svg",
+        "deskripsi": "Selendang ringan bermotif irisan daun pudak (pandan)."
+    }
+
+    
+
+]

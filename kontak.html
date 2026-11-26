@@ -1,62 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Katalog kain dan busana Sasirangan khas Banjarmasin karya pengrajin lokal.">
+
+    <title>Sasirangan Banua | Kain Khas Banjar</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/katalog.js" defer></script> 
+</head>
+
+<body>
+
+    <!-- ==================================================
+         HEADER DAN NAVIGASI
+         ================================================== -->
+
+    <header class="header-situs">
+
+        <p class="logo">
+            <a href="index.html">Sasirangan Banua</a>
+        </p>
+
+        <nav aria-label="Navigasi utama">
+            <ul class="menu">
+                <li><a href="index.html" aria-current="page">Beranda</a></li>
+                <li><a href="#katalog">Katalog</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="kontak.html">Pesan</a></li>
+            </ul>
+        </nav>
+
+    </header>
 <main>
-  <section class="bagian" id="pesan">
-    <h1>Formulir Pemesanan</h1>
-    <p>Isi formulir berikut. Kolom bertanda <strong>*</strong> wajib diisi.</p>
 
-    <form id="form-pesan" class="form-pesan" action="#" method="get">
-      <div class="kolom">
-        <label for="nama">Nama lengkap *</label>
-        <input type="text" id="nama" name="nama" required minlength="3"
-               autocomplete="name">
-      </div>
 
-      <div class="kolom">
-        <label for="wa">Nomor WhatsApp *</label>
-        <input type="tel" id="wa" name="wa" required pattern="08[0-9]{8,11}"
-               placeholder="Contoh: 081234567890" autocomplete="tel">
-      </div>
+    <!-- ==================================================
+         FORMULIR PEMESANAN
+         ================================================== -->
 
-      <div class="kolom">
-        <label for="email">Surel</label>
-        <input type="email" id="email" name="email" autocomplete="email">
-      </div>
+    <section class="bagian" id="pesan">
 
-      <div class="kolom">
-        <label for="produk">Produk yang dipesan *</label>
-        <select id="produk" name="produk" required>
-          <option value="">-- Pilih produk --</option>
-          <option>Kain Motif Gigi Haruan</option>
-          <option>Kain Motif Kambang Kacang</option>
-          <option>Selendang Iris Pudak</option>
-          <option>Kemeja Bayam Raja</option>
-          <option>Tas Naga Balimbur</option>
-          <option>Gamis Ombak Sinapur Karang</option>
-        </select>
-      </div>
+        <h1>Formulir Pemesanan</h1>
 
-      <div class="kolom">
-        <label for="jumlah">Jumlah *</label>
-        <input type="number" id="jumlah" name="jumlah" min="1" max="50" value="1" required>
-      </div>
+        <p>
+            Isi formulir berikut. Kolom bertanda
+            <strong>*</strong> wajib diisi.
+        </p>
 
-      <fieldset>
-        <legend>Metode pengambilan *</legend>
-        <label><input type="radio" name="pengambilan" value="Ambil di galeri" checked> Ambil di galeri</label>
-        <label><input type="radio" name="pengambilan" value="Dikirim ke alamat"> Dikirim ke alamat</label>
-      </fieldset>
 
-      <div class="kolom">
-        <label for="catatan">Catatan tambahan</label>
-        <textarea id="catatan" name="catatan" rows="4" maxlength="300"
-                  placeholder="Contoh: ukuran L, warna dominan merah"></textarea>
-      </div>
+        <form id="form-pesan" class="form-pesan" action="#" method="get">
 
-      <label class="cek">
-        <input type="checkbox" id="setuju" name="setuju" required>
-        Saya setuju data ini hanya dipakai untuk memproses pesanan. *
-      </label>
+            <!-- Nama Lengkap -->
 
-      <button type="submit" class="tombol">Kirim Pesanan</button>
-    </form>
-  </section>
+            <div class="kolom">
+
+                <label for="nama">Nama lengkap *</label>
+
+                <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    required
+                    minlength="3"
+                    autocomplete="name"
+                    aria-describedby="error-nama"
+                >
+
+                <p class="pesan-error" id="error-nama"></p>
+
+            </div>
+
+
+            <!-- Nomor WhatsApp -->
+
+            <div class="kolom">
+
+                <label for="wa">Nomor WhatsApp *</label>
+
+                <input
+                    type="tel"
+                    id="wa"
+                    name="wa"
+                    required
+                    autocomplete="tel"
+                    placeholder="Contoh: 081234567890"
+                    aria-describedby="error-wa"
+                >
+
+                <p class="pesan-error" id="error-wa"></p>
+
+            </div>
+
+
+            <!-- Alamat Email -->
+
+            <div class="kolom">
+
+                <label for="email">Alamat email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="Contoh: nama@email.com"
+                    aria-describedby="error-email"
+                >
+
+                <p class="pesan-error" id="error-email"></p>
+
+            </div>
+
+
+            <!-- Pilihan Produk -->
+
+            <div class="kolom">
+
+                <label for="produk">Produk yang dipesan *</label>
+
+                <select id="produk" name="produk" required>
+
+                    <option value="">-- Pilih produk --</option>
+                    <option value="Kain Motif Gigi Haruan">Kain Motif Gigi Haruan</option>
+                    <option value="Kain Motif Kambang Kacang">Kain Motif Kambang Kacang</option>
+                    <option value="Selendang Iris Pudak">Selendang Iris Pudak</option>
+                    <option value="Kemeja Bayam Raja">Kemeja Bayam Raja</option>
+                    <option value="Tas Naga Balimbur">Tas Naga Balimbur</option>
+                    <option value="Gamis Ombak Sinapur Karang">Gamis Ombak Sinapur Karang</option>
+
+                </select>
+
+                <p class="pesan-error" id="error-produk"></p>
+
+            </div>
+
+
+            <!-- Jumlah Produk -->
+
+            <div class="kolom">
+
+                <label for="jumlah">Jumlah *</label>
+
+                <input
+                    type="number"
+                    id="jumlah"
+                    name="jumlah"
+                    min="1"
+                    max="50"
+                    value="1"
+                    required
+                    aria-describedby="error-jumlah"
+                >
+
+                <p class="pesan-error" id="error-jumlah"></p>
+
+            </div>
+
+
+            <!-- Metode Pengambilan -->
+
+            <fieldset>
+
+                <legend>Metode pengambilan *</legend>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="pengambilan"
+                        value="Ambil di galeri"
+                        checked
+                    >
+                    Ambil di galeri
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="pengambilan"
+                        value="Dikirim ke alamat"
+                    >
+                    Dikirim ke alamat
+                </label>
+
+            </fieldset>
+
+
+            <!-- Catatan Tambahan -->
+
+            <div class="kolom">
+
+                <label for="catatan">Catatan tambahan</label>
+
+                <textarea
+                    id="catatan"
+                    name="catatan"
+                    rows="4"
+                    maxlength="300"
+                    placeholder="Contoh: ukuran L, warna dominan merah"
+                ></textarea>
+
+            </div>
+
+
+            <!-- Persetujuan Penggunaan Data -->
+
+            <div class="kolom">
+
+                <label class="cek">
+
+                    <input
+                        type="checkbox"
+                        id="setuju"
+                        name="setuju"
+                        required
+                        aria-describedby="error-setuju"
+                    >
+
+                    Saya setuju data ini hanya dipakai untuk
+                    memproses pesanan. *
+
+                </label>
+
+                <p class="pesan-error" id="error-setuju"></p>
+
+            </div>
+
+
+            <!-- Tombol Kirim -->
+
+            <button type="submit" class="tombol">
+                Kirim Pesanan
+            </button>
+
+        </form>
+
+
+        <!-- ==================================================
+             HASIL DAN RINGKASAN PESANAN
+             Ditampilkan setelah formulir valid
+             ================================================== -->
+
+        <div id="hasil-pesan" class="hasil-pesan" hidden>
+
+            <h2>Ringkasan Pesanan</h2>
+
+            <pre id="ringkasan"></pre>
+
+            <a
+                id="tautan-wa"
+                class="tombol"
+                href="#"
+                target="_blank"
+                rel="noopener"
+            >
+                Lanjutkan ke WhatsApp
+            </a>
+
+        </div>
+
+    </section>
+
 </main>
